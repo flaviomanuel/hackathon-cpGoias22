@@ -11,7 +11,14 @@ img2_name = "img2"
 
 def control(input_path, output_path, extension):
     rawaudio = AudioSegment.from_file(file = input_path, type = extension)
+    arrays = rawaudio.get_array_of_samples()
+    teste = arrays
+    print(teste)
+    audio = AudioSegment.from_file(file = norma_wav_string, type = "wav")
+    print(audio.get_array_of_samples())
+
     audiofilter.filteringAudio(rawaudio, wav_string, norma_wav_string)
+    
 
     # audio data
     data, sampleRate = sf.read(wav_string)

@@ -10,6 +10,7 @@ def playing_audio(audioFilePath):
     play(song)
 
 def showing_audiotrack(data, samplerate, path):
+
     # We use a variable previousTime to store the time when a plot update is made
     # and to then compute the time taken to update the plot of the audio data.
     previousTime = time.time()
@@ -31,7 +32,7 @@ def showing_audiotrack(data, samplerate, path):
     spentTime = 0
 
     # Let's the define the update periodicity
-    updatePeriodicity = 2 # expressed in seconds
+    updatePeriodicity = 10 # expressed in seconds
 
     # Plotting the audio data and updating the plot
     for i in range(dataLenght):
@@ -43,7 +44,6 @@ def showing_audiotrack(data, samplerate, path):
             # Clear the previous plot
             plt.clf()
             # Plot the audio data
-            plt.ylim((-5, 5))
             plt.plot(time_axis, sound_axis)
             # Plot a red line to keep track of the progression
             # plt.axvline(x=i / samplerate, color='r')
