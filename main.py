@@ -13,4 +13,4 @@ if(__name__ == "__main__"):
         elif argumento[0:3] == '-o=':
             output_path = argumento[3:]
     controller.control(input_path, output_path, input_extension)
-    # python main.py -i="./audios/asmr.mp4" -o="./output/mp4/output.mp4
+    # python main.py -i="./audios/video.mp4" -o="./output/mp4/output.mp4"
