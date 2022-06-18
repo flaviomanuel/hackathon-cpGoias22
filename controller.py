@@ -1,6 +1,7 @@
 from utils import audiogroup, audiofilter, audiographicmanager
 from pydub import AudioSegment
 import soundfile as sf
+import speech_recognition as sr
 
 name_file = "audio"
 output_wav_folder = "./audios/temp/"
@@ -28,3 +29,12 @@ def control(input_path, output_path, extension):
     audiographicmanager.showing_audiotrack(normaData, normaSampleRate, img2_name)
 
     audiogroup.merge_files(input_path, norma_wav_string, output_path)
+
+    #trancription
+    rec = sr.Recognizer()
+    with sr.AudioFile(wav_string) as fonte:
+        audio = rec.record(fonte)
+
+    file = open("output/txt/trascricao.txt", 'w')
+    file.write(rec.recognize_google(audio, language='pt'))
+    file.close()

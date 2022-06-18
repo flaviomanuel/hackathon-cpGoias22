@@ -2,4 +2,4 @@ scipy
 pandas
 matplotlib
 pydub
- 
+speech_recognition
