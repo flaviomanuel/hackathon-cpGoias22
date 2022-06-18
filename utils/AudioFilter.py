@@ -13,8 +13,8 @@ def filtering_noise(sound: AudioSegment, lower_limit, upper_limit, order = 3):
 
 def filteringAudio(rawaudio, wav_string, norma_wav_string):
     try:
-        normalized = filtering_noise(rawaudio, 240, 18000, 0)
-        normalized = match_target_amplitude(normalized, -6.0)
+        normalized = filtering_noise(rawaudio, 450, 15000, 0)
+        normalized = match_target_amplitude(normalized, -12.0)
         normalized.export(norma_wav_string, format="wav")
         rawaudio.export(wav_string, format = "wav")
     except:
