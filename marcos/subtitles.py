@@ -4,15 +4,14 @@ import json
 from vosk import Model, KaldiRecognizer, SetLogLevel
 import word as custom_Word
 
-model_path = "models/vosk-model-en-us-0.21"
-audio_filename = "audio/speech_recognition_systems.wav"
 
-model = Model(model_path)
-wf = wave.open(audio_filename, "rb")
+model = Model('modelo')
+
+wf = wave.open('./output/wav/video.wav', "rb") #rb stands for read only
 rec = KaldiRecognizer(model, wf.getframerate())
 rec.SetWords(True)
 
-# get the list of JSON dictionaries
+# create the list of JSON dictionaries
 results = []
 # recognize speech using vosk model
 while True:
