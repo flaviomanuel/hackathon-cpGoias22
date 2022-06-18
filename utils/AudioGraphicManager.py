@@ -9,7 +9,7 @@ def playing_audio(audioFilePath):
     song = AudioSegment.from_file(file = audioFilePath, type="wav")
     play(song)
 
-def showing_audiotrack(data, samplerate):
+def showing_audiotrack(data, samplerate, path):
     # We use a variable previousTime to store the time when a plot update is made
     # and to then compute the time taken to update the plot of the audio data.
     previousTime = time.time()
@@ -54,7 +54,7 @@ def showing_audiotrack(data, samplerate):
             # a forced pause to synchronize the audio being played with the audio track being displayed
             # previousTime = time.time()
             spentTime = 0
-            plt.savefig("01.png")
+            plt.savefig("./img/"+path+".png")
         
 # def startAudioGraphic(audioFilePath):
 #     print("ola")
