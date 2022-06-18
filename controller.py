@@ -10,15 +10,17 @@ img1_name = "img1"
 img2_name = "img2"
 
 def control(input_path, output_path, extension):
-    rawaudio = AudioSegment.from_file(file = input_path, type = extension)
-    arrays = rawaudio.get_array_of_samples()
-    teste = arrays
-    print(teste)
-    audio = AudioSegment.from_file(file = norma_wav_string, type = "wav")
-    print(audio.get_array_of_samples())
-
-    audiofilter.filteringAudio(rawaudio, wav_string, norma_wav_string)
-    
+    try:
+        print("Abrindo arquivo: "+input_path)
+        rawaudio = AudioSegment.from_file(file = input_path, type = extension)
+    except:
+        print("Erro ao abrir o arquivo.")
+        return False
+    try:
+        audiofilter.filteringAudio(rawaudio, wav_string, norma_wav_string)
+    except:
+        print("Erro controler1.")
+        return False
 
     # audio data
     data, sampleRate = sf.read(wav_string)

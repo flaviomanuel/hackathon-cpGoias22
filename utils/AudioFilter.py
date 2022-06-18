@@ -13,13 +13,24 @@ def filtering_noise(sound: AudioSegment, lower_limit, upper_limit, order = 3):
 
 def filteringAudio(rawaudio, wav_string, norma_wav_string):
     try:
-        normalized = filtering_noise(rawaudio, 450, 15000, 0)
-        normalized = match_target_amplitude(normalized, -12.0)
-        normalized.export(norma_wav_string, format="wav")
-        rawaudio.export(wav_string, format = "wav")
+        print("Iniciando conversão.")
+        print(type(rawaudio))
+        normalized = match_target_amplitude(rawaudio, -6.0)
+        filtered = filtering_noise(normalized, 450, 18000, 0)
+        try:
+            filtered.export(norma_wav_string, format="wav")
+            print("Salvando na pasta: "+ norma_wav_string)
+        except:
+            print("Erro 02.")
+        try:
+            rawaudio.export(wav_string, format = "wav")
+            print("Salvando na pasta: "+ wav_string)
+        except:
+            print("Erro 02.")
+        return True
     except:
+        print("ERROOOR")
         return False
-    return True
 
 def playNormalized(audio):
     play(audio)
